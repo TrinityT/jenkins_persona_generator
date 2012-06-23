@@ -11,25 +11,39 @@
         %a{:href => 'https://wiki.jenkins-ci.org/display/JENKINS/Persona+Plugin'} JenkinsPersonaPlugin
         %br
         %br
-    %form{:action=>"/", :method=>"post"}
+    %form{:action => '/upload', :method => 'POST', :enctype => 'multipart/form-data'}
       Persona名 ※必須
       %div
         %textarea{:name=>"name", :rows=>"1", :cols=>"80"}
       Persona表示名
       %div
         %textarea{:name=>"display_name", :rows=>"1", :cols=>"80"}
-      ランダム表示文言 (改行区切りで複数指定)
+      %h2 文言
+      ジョブTOPページ文言 (改行区切りで複数指定可能)
       %div
-        %textarea{:name=>"quotes", :rows=>"5", :cols=>"80"}
-      ビルド成功(green)時文言 (改行区切りで複数指定)
+        %textarea{:name=>"quotes", :rows=>"3", :cols=>"80"}
+      ビルド成功(green)時文言 (改行区切りで複数指定可能)
       %div
-        %textarea{:name=>"successes", :rows=>"5", :cols=>"80"}
-      ビルド失敗(red)時文言 (改行区切りで複数指定)
+        %textarea{:name=>"successes", :rows=>"3", :cols=>"80"}
+      ビルド失敗(red)時文言 (改行区切りで複数指定可能)
       %div
-        %textarea{:name=>"failures", :rows=>"5", :cols=>"80"}
-      ビルドその他(yellow)時文言 (改行区切りで複数指定)
+        %textarea{:name=>"failures", :rows=>"3", :cols=>"80"}
+      ビルドその他(yellow)時文言 (改行区切りで複数指定可能)
       %div
-        %textarea{:name=>"others", :rows=>"5", :cols=>"80"}
+        %textarea{:name=>"others", :rows=>"3", :cols=>"80"}
+      %h2 画像
+      アイコン画像 [icon.jpg]
       %div
+        %input{:type=>"file",:name=>"image_icon"}
+      ビルド成功(green)時画像 [success.jpg]
+      %div
+        %input{:type=>"file",:name=>"image_success"}
+      ビルド失敗(red)時画像 [failure.jpg]
+      %div
+        %input{:type=>"file",:name=>"image_failure"}
+      ビルドその他(yellow)時画像 [other.jpg]
+      %div
+        %input{:type=>"file",:name=>"image_other"}
+      %br  
+      %div{:style => "padding-left: 200px"}
         %input{:type=>"submit", :value=>"生成"}
-
