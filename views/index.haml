@@ -3,12 +3,33 @@
 %html
   %head
     %meta{ :content=>"text/html", :charset=>"utf-8" }
-    %title hello worldだよ
+    %title JenkinsPersonaGenerator For JenkinsPersonaPlugin
   %body
     #main
-      %h1 hello worldだよ
-      %div hello worldって入力してね
-      %form{:action=>"/", :method=>"post"}
-        %input{:type=>"texfield",:name=>"str"}
-        %input{:type=>"submit", :value=>"send"}
-      %div= @message
+      %div
+        JenkinsPersonaGenerator For
+        %a{:href => 'https://wiki.jenkins-ci.org/display/JENKINS/Persona+Plugin'} JenkinsPersonaPlugin
+        %br
+        %br
+    %form{:action=>"/", :method=>"post"}
+      Persona名 ※必須
+      %div
+        %textarea{:name=>"name", :rows=>"1", :cols=>"80"}
+      Persona表示名
+      %div
+        %textarea{:name=>"display_name", :rows=>"1", :cols=>"80"}
+      文言 (改行区切りで複数指定)
+      %div
+        %textarea{:name=>"quotes", :rows=>"5", :cols=>"80"}
+      ビルド成功時文言 (改行区切りで複数指定)
+      %div
+        %textarea{:name=>"successes", :rows=>"5", :cols=>"80"}
+      ビルド失敗時文言 (改行区切りで複数指定)
+      %div
+        %textarea{:name=>"failures", :rows=>"5", :cols=>"80"}
+      ビルドその他時文言 (改行区切りで複数指定)
+      %div
+        %textarea{:name=>"others", :rows=>"5", :cols=>"80"}
+      %div
+        %input{:type=>"submit", :value=>"生成"}
+
