@@ -2,7 +2,7 @@
 !!!
 %html
   %head
-    %meta{ :content=>"text/html", :charset=>"utf-8" }
+    %meta{:content=>"text/html", :charset=>"utf-8"}
     %title JenkinsPersonaGenerator For JenkinsPersonaPlugin
   %body
     #main
@@ -11,17 +11,14 @@
         %a{:href => 'https://wiki.jenkins-ci.org/display/JENKINS/Persona+Plugin'} JenkinsPersonaPlugin
         %br
         %br
-    %form{:action => '/upload', :method => 'POST', :enctype => 'multipart/form-data'}
+    %form{:action=>'/', :method=>'POST', :enctype=>'multipart/form-data'}
       Persona名 ※必須
       %div
-        %textarea{:name=>"name", :rows=>"1", :cols=>"80"}
+        %textarea{:name=>"name", :rows=>"1", :cols=>"80", :style=>"ime-mode:disabled;"}
       Persona表示名
       %div
         %textarea{:name=>"display_name", :rows=>"1", :cols=>"80"}
       %h2 文言
-      ジョブTOPページ文言 (改行区切りで複数指定可能)
-      %div
-        %textarea{:name=>"quotes", :rows=>"3", :cols=>"80"}
       ビルド成功(green)時文言 (改行区切りで複数指定可能)
       %div
         %textarea{:name=>"successes", :rows=>"3", :cols=>"80"}
@@ -34,16 +31,16 @@
       %h2 画像
       アイコン画像 [icon.jpg]
       %div
-        %input{:type=>"file",:name=>"image_icon"}
+        %input{:type=>"file", :name=>"image_icon"}
       ビルド成功(green)時画像 [success.jpg]
       %div
-        %input{:type=>"file",:name=>"image_success"}
+        %input{:type=>"file", :name=>"image_success"}
       ビルド失敗(red)時画像 [failure.jpg]
       %div
-        %input{:type=>"file",:name=>"image_failure"}
+        %input{:type=>"file", :name=>"image_failure"}
       ビルドその他(yellow)時画像 [other.jpg]
       %div
-        %input{:type=>"file",:name=>"image_other"}
+        %input{:type=>"file", :name=>"image_other"}
       %br  
       %div{:style => "padding-left: 200px"}
         %input{:type=>"submit", :value=>"生成"}

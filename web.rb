@@ -8,21 +8,20 @@ get '/' do
   haml :index
 end
 
-post '/upload' do
+post '/' do
   name = params[:name]
   display_name = params[:display_name]
-  quotes = params[:quotes]
   successes = params[:successes]
   failures = params[:failures]
   others = params[:others]
 
   unless params[:image_icon] || params[:image_success] ||
       params[:image_failure] || params[:image_other]
-    return haml :index
+    return "全ての画像ファイルを指定してください"
   end
 
   file_buffers = generate_file_buffers(params)
-  xml_text = generate_xml(name, display_name, quotes, successes, failures, others)
+  xml_text = generate_xml(name, display_name, successes, failures, others)
 
   zip_buffer = ''
   Zip::Archive.open_buffer(zip_buffer, Zip::CREATE, Zip::NO_COMPRESSION) do |archive|
@@ -50,12 +49,9 @@ def generate_file_buffers(params)
   file_buffers
 end
 
-def generate_xml(name, display_name, quotes, successes, failures, others)
+def generate_xml(name, display_name, successes, failures, others)
   xml =  "<?xml version='1.0' ?>\n"
   xml += "<persona id='#{name}' displayName='#{display_name}'>\n"
-  quotes.split.each do |str|
-    xml +=  "  <quote>#{str}</quote>\n"
-  end
   successes.split.each do |str|
     xml +=  "  <quote type='success'>#{str}</quote>\n"
   end
