@@ -1,0 +1,14 @@
+!!! XML
+!!!
+%html
+  %head
+    %meta{ :content=>"text/html", :charset=>"utf-8" }
+    %title hello worldだよ
+  %body
+    #main
+      %h1 hello worldだよ
+      %div hello worldって入力してね
+      %form{:action=>"/", :method=>"post"}
+        %input{:type=>"texfield",:name=>"str"}
+        %input{:type=>"submit", :value=>"send"}
+      %div= @message

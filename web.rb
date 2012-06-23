@@ -1,5 +1,12 @@
+# coding:utf-8
 require 'sinatra'
 
 get '/' do
-  "Hello, world"
+  haml :index
+end
+
+post '/' do
+  @message = "hai"
+  @message = "\"hello world\"って言えよ" unless params[:str] == "hello world"
+  haml :index
 end
