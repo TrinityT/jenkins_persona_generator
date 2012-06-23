@@ -3,6 +3,7 @@ require 'rubygems'
 require 'sinatra'
 require 'zipruby'
 require 'nkf'
+require 'RMagick'
 
 get '/' do
   haml :index

@@ -4,4 +4,5 @@ gem 'sinatra'
 gem 'heroku'
 gem 'haml'
 gem 'zipruby'
-gem 'rmagick'
+gem "rmagick", :require => "RMagick"
+
