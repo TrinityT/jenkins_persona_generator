@@ -26,7 +26,7 @@ post '/upload' do
 
   zip_buffer = ''
   Zip::Archive.open_buffer(zip_buffer, Zip::CREATE, Zip::NO_COMPRESSION) do |archive|
-    archive.add_buffer("persona.xml", NKF.nkf('-U -s -Lw', xml_text))
+    archive.add_buffer("persona.xml", xml_text)
     file_buffers.each_pair do |filename, buf|
       archive.add_buffer(filename, buf)
     end
@@ -51,7 +51,8 @@ def generate_file_buffers(params)
 end
 
 def generate_xml(name, display_name, quotes, successes, failures, others)
-  xml = "<persona id='#{name}' displayName='#{display_name}'>\n"
+  xml =  "<?xml version='1.0' ?>\n"
+  xml += "<persona id='#{name}' displayName='#{display_name}'>\n"
   quotes.split.each do |str|
     xml +=  "  <quote>#{str}</quote>\n"
   end
